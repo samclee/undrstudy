@@ -9,7 +9,7 @@ export class Actions {
 
     public static removeRow(index: number): ActionsType {
         return {
-            type: Action.AddRow,
+            type: Action.RemoveRow,
             index
         }
     }
