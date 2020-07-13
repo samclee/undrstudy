@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { DialogPackage, IState} from "../types";
 import { Actions } from "../store";
+import { DialogLine } from "./DialogLine";
 
 interface PropsFromState {
     rows: DialogPackage[]
@@ -26,8 +27,12 @@ class DialogDisplay extends React.Component<IProps> {
     public render(): JSX.Element {
         return (
             <div>
+                {this.props.rows.map((row, index) => {
+                    return <DialogLine 
+                                index={index}
+                            />
+                })}
                 <h1 onClick={this.props.addRow}>Add row</h1>
-                {this.props.rows.map(row => <h1>Yup this is a row</h1>)}
             </div>
         )
     }

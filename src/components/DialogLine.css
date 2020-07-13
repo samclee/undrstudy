@@ -1,0 +1,4 @@
+.dialogLine {
+    display: flex;
+    flex-direction: row;
+}
