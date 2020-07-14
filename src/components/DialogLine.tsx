@@ -5,6 +5,7 @@ import { PortraitInput } from "./PortraitInput";
 import { NextInput } from "./NextInput";
 import { TextInput } from "./TextInput";
 import { FuncDisplay } from "./FuncDisplay";
+import { DialogPackage } from "../types";
 import "./DialogLine.css";
 
 interface PropsFromDispatch {
@@ -17,6 +18,7 @@ const mapDispatchToProps: PropsFromDispatch = {
 
 interface DialogLineProps {
     index: number;
+    row: DialogPackage;
 }
 
 type IProps = DialogLineProps  & PropsFromDispatch
@@ -37,6 +39,7 @@ class DialogLine extends React.Component<IProps> {
                 />
                 <TextInput
                     index={this.props.index}
+                    row={this.props.row}
                 />
                 <FuncDisplay
                     index={this.props.index}

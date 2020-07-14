@@ -12,5 +12,10 @@ export interface DialogPackage {
 }
 
 export interface IState {
-    rows: DialogPackage[]
+  rows: DialogPackage[]
+}
+
+export enum InputMode {
+  StoreDisplay = "StoreDisplay",
+  Edit = "Edit"
 }

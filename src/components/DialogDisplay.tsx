@@ -30,6 +30,7 @@ class DialogDisplay extends React.Component<IProps> {
                 {this.props.rows.map((row, index) => {
                     return <DialogLine 
                                 index={index}
+                                row={row}
                             />
                 })}
                 <h1 onClick={this.props.addRow}>Add row</h1>

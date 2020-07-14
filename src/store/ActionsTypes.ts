@@ -22,6 +22,13 @@ export interface RemoveRow extends AnyAction {
     index: number
 }
 
+export interface ChangeText extends AnyAction {
+    type: typeof Action.ChangeText;
+    index: number;
+    newText: string
+}
+
 export type ActionsType =
     | AddRow
-    | RemoveRow;
+    | RemoveRow
+    | ChangeText;
