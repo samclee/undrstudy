@@ -1,11 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Actions } from "../store";
 import { InputMode, DialogPackage } from "../types";
-import { throws } from "assert";
 
-interface IProps {
+interface PropsFromDispatch {
+    changeText: typeof Actions.changeText;
+}
+
+const mapDispatchToProps = {
+    changeText: Actions.changeText
+}
+
+interface TextInputProps {
     row: DialogPackage;
     index: number;
 }
+
+type IProps = TextInputProps & PropsFromDispatch;
 
 interface IState {
     mode: InputMode;
@@ -31,6 +42,7 @@ class TextInput extends React.Component<IProps, IState> {
             return (
                 <input
                     defaultValue={this.props.row.text}
+                    onChange={this.onChange}
                     onBlur={this.onBlur}
                 />
             );
@@ -44,6 +56,11 @@ class TextInput extends React.Component<IProps, IState> {
     private onFocus = () => {
         this.setState({mode: InputMode.Edit});
     }
+
+    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.props.changeText(this.props.index, e.target.value);
+    }
 }
 
-export { TextInput }
+const textInput = connect(null, mapDispatchToProps)(TextInput);
+export { textInput as TextInput }

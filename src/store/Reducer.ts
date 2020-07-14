@@ -1,5 +1,5 @@
 import { IState, DialogPackage } from "../types";
-import { Action, ActionsType, AddRow, RemoveRow } from "./ActionsTypes";
+import { Action, ActionsType, AddRow, RemoveRow, ChangeText } from "./ActionsTypes";
 
 
 function handleAddRow(state: IState, _action: AddRow): IState {
@@ -22,6 +22,12 @@ function handleRemoveRow(state: IState, action: RemoveRow): IState {
     return { rows };
 }
 
+function handleChangeText(state: IState, action: ChangeText): IState {
+    const rows = Array.from(state.rows);
+    rows[action.index].text = action.newText;
+    
+    return { rows };
+}
 const initialState: IState = {
     rows: []
 }
@@ -32,6 +38,8 @@ export function reducer(state: IState = initialState, action: ActionsType): ISta
             return handleAddRow(state, action);
         case Action.RemoveRow:
             return handleRemoveRow(state, action);
+        case Action.ChangeText:
+            return handleChangeText(state, action);
         default:
             return state;
     }

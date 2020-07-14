@@ -13,4 +13,12 @@ export class Actions {
             index
         }
     }
+
+    public static changeText(index: number, newText: string): ActionsType {
+        return {
+            type: Action.ChangeText,
+            index,
+            newText
+        }
+    }
 }
